@@ -46,3 +46,5 @@ public class Professor {
 	    @JoinTable(name = "professor_turma")
 	    private List<Turma> turmas;
 	}
+
+

@@ -35,7 +35,9 @@ public class Aluno {
 	@ManyToOne
 	private Turma turma;
 	
+	private Boolean cadastroCompleto;
+	
 }
 
---> nasser <--
+
 	
