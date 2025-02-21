@@ -15,6 +15,15 @@ public class ProfessorService {
 	private ProfessorRepository professorRepository;
 	
 	public String save(Professor professor) {
+		
+		Professor emailExistente = this.professorRepository.findByEmail(professor.getEmail());
+		if(emailExistente != null) {
+			throw new RuntimeException("Jà existe o professor com esse email");		
+		}
+		if (professor.getEmail()!= null && professor.getEmail().contains("@outlook.com")){
+			throw new RuntimeException("Dominio de e-mail nao permitido");		
+		}
+		
 		this.professorRepository.save(professor);
 		return "Professor salvo com sucesso!";
 	}
