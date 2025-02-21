@@ -38,4 +38,8 @@ public class AlunoService {
 	public List<Aluno> findAll(){
 		return this.alunoRepository.findAll();
 	}
+	
+	public List <Aluno> findByNome (String nome){
+		return this.alunoRepository.findByNomeStartingWith(nome);
+		}
 }
