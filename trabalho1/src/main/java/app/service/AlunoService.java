@@ -46,4 +46,8 @@ public class AlunoService {
 	public List<Aluno> buscarTelefone(String telefone) {
         return this.alunoRepository.findByTelefoneContaining(telefone);
     }
+	
+	public List<Aluno> buscarNomeDaTurma(String nomeTurma) {
+        return this.alunoRepository.findByTurmaNome(nomeTurma);
+    }
 }

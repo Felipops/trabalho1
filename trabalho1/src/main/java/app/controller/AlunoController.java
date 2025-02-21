@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -95,6 +94,17 @@ public class AlunoController {
 	    }
 	}
 
+	@GetMapping("/buscarNomeDaTurma")
+    public ResponseEntity<List<Aluno>> buscarPorNomeDaTurma(@RequestParam String nomeTurma) {
+        try {
+            List<Aluno> alunos = this.alunoService.buscarNomeDaTurma(nomeTurma);
+            return new ResponseEntity<>(alunos, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+	
+	
 	}
 	
 	
