@@ -42,4 +42,8 @@ public class AlunoService {
 	public List <Aluno> findByNome (String nome){
 		return this.alunoRepository.findByNomeStartingWith(nome);
 		}
+	
+	public List<Aluno> buscarTelefone(String telefone) {
+        return this.alunoRepository.findByTelefoneContaining(telefone);
+    }
 }
