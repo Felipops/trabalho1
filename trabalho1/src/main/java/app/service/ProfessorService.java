@@ -46,4 +46,19 @@ public class ProfessorService {
 	public List<Professor> findAll(){
 		return this.professorRepository.findAll();
 	}
+	public List <Professor> findByNome (String nome){
+		return this.professorRepository.findByNomeStartingWith(nome);
+		}
+	
+	public List<Professor> buscarProfessoresSemGmail() {
+	        return professorRepository.findByEmailNotLike("%@gmail.com%");
+	    }
+	
+	public Professor findByEmail(String email) {
+	    Professor professor = this.professorRepository.findByEmail(email);
+	    if (professor == null) {
+	        throw new RuntimeException("Professor não encontrado com esse email");
+	    }
+	    return professor;
+	}
 }

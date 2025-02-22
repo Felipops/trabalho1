@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Professor;
@@ -74,5 +75,35 @@ public class ProfessorController {
 		}
 	}
 	
+	@GetMapping("/buscarNomeProfessor")
+    public ResponseEntity<List<Professor>> buscarPorNomeProfessor(@RequestParam String nome) {
+        try {
+            List<Professor> professores = this.professorService.findByNome(nome);
+            return new ResponseEntity<>(professores, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+	
+	@GetMapping("/buscarSemGmail")
+    public ResponseEntity<List<Professor>> buscarProfessoresSemGmail() {
+        try {
+            List<Professor> professores = professorService.buscarProfessoresSemGmail();
+            return new ResponseEntity<>(professores, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+	
+	
+		@GetMapping("/findByEmail")
+		public ResponseEntity<Professor> findByEmail(@RequestParam String email) {
+		    try {
+		        Professor professor = this.professorService.findByEmail(email);
+		        return new ResponseEntity<>(professor, HttpStatus.OK);
+		    } catch (RuntimeException e) {
+		        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST); // Retorna 404 caso não encontre
+		    }
+		} 
 }
  
