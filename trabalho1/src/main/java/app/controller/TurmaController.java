@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Turma;
@@ -73,5 +74,49 @@ public class TurmaController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+//	@GetMapping("/findByAnoBetween")
+//	public ResponseEntity<List<Turma>> findByAnoBetween(@RequestParam int ano1,
+//			@RequestParam int ano2){
+//		try {
+//			return new ResponseEntity<>(this.turmaService.findByAnoBetween(ano1,ano2), HttpStatus.OK);
+//		} catch (Exception e) {
+//			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST );
+//
+//		}
+//	}
+	
+	
+	@GetMapping("/findBySemestreAndAno")
+	public ResponseEntity<List<Turma>> findBySemestreAndAno(@RequestParam String semestre, @RequestParam int ano) {
+	    try {
+	        List<Turma> turmas = this.turmaService.findBySemestreAndAno(semestre, ano);
+	        return new ResponseEntity<>(turmas, HttpStatus.OK);
+	    } catch (Exception e) {
+	        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+	    }
+	}
+
+	
+	@GetMapping("/findByNomeAndTurno")
+	public ResponseEntity<List<Turma>> findByNomeAndTurno(@RequestParam String nome, @RequestParam String turno) {
+	    try {
+	        List<Turma> turmas = this.turmaService.findByNomeAndTurno(nome, turno);
+	        return new ResponseEntity<>(turmas, HttpStatus.OK);
+	    } catch (Exception e) {
+	        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+	    }
+	}
+
+	@GetMapping("/findByCurso")
+	public ResponseEntity<List<Turma>> findByCurso(@RequestParam String nomeCurso) {
+	    try {
+	        List<Turma> turmas = this.turmaService.findByCursoNome(nomeCurso);
+	        return new ResponseEntity<>(turmas, HttpStatus.OK);
+	    } catch (Exception e) {
+	        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+	    }
+	}
+	
 	
 }

@@ -37,4 +37,21 @@ public class TurmaService {
 	public List<Turma> findAll(){
 		return this.turmaRepository.findAll();
 	}
+	
+//	public List<Turma> findByAnoBetween(int ano1, int ano2){
+//		return this.turmaRepository.findByAnoBetween(ano1, ano2);
+//	}
+	
+	public List<Turma> findBySemestreAndAno(String semestre, int ano) {
+	    return this.turmaRepository.findBySemestreAndAno(semestre, ano);
+	}
+
+	public List<Turma> findByNomeAndTurno(String nome, String turno) {
+	    return this.turmaRepository.findByNomeAndTurno(nome, turno);
+	}
+
+	public List<Turma> findByCursoNome(String nomeCurso) {
+	    return this.turmaRepository.findByCursoNome(nomeCurso);
+	}
+	
 }
