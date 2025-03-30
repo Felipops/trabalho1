@@ -1,9 +1,13 @@
 package app.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -28,4 +32,8 @@ public class Turma {
 	private String turno;
 	@ManyToOne
 	private Curso curso;
+	
+	@ManyToMany
+    @JoinTable(name = "professor_turma")
+    private List<Professor> professores;
 }

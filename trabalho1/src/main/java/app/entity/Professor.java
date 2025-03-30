@@ -39,12 +39,11 @@ public class Professor {
 	    private String email;
 	    
 	    @NotBlank
-	    @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)+$", message = "O nome deve conter pelo menos duas palavras separadas por espaços.")
 	    private String especialidade;
 
-	    @ManyToMany
-	    @JoinTable(name = "professor_turma")
-	    private List<Turma> turmas;
+//	    @ManyToMany
+//	    @JoinTable(name = "professor_turma")
+//	    private List<Turma> turmas;
 	}
 
 
